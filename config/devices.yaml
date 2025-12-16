@@ -1,0 +1,153 @@
+# Uptime Kuma Monitor Configuration
+# This file defines all devices and ports to monitor on your network
+
+monitors:
+  # Network Infrastructure
+  - name: "ATT Air"
+    ip: "192.168.1.254"
+    type: "ping"
+    location: "MB Closet"
+    manufacturer: "ATT"
+    notes: "Main Router"
+    
+  - name: "Archer A7 - Outdoors Tank"
+    ip: "192.168.1.253"
+    type: "ping"
+    location: "Outdoors Tank"
+    manufacturer: "TP-Link"
+    notes: "Access Point 1"
+    
+  - name: "Archer A7 - Garage"
+    ip: "192.168.1.252"
+    type: "ping"
+    location: "Garage"
+    manufacturer: "TP-Link"
+    notes: "Access Point 2"
+    
+  - name: "Archer A6 - Garage"
+    ip: "192.168.1.251"
+    type: "ping"
+    location: "Garage"
+    manufacturer: "TP-Link"
+    notes: "Access Point 3"
+
+  # Raspberry Pi Servers
+  - name: "RPI5 Prod Server"
+    ip: "192.168.1.250"
+    type: "port"
+    ports: [21, 22, 1883, 3000, 8086, 5900]
+    location: "Garage"
+    manufacturer: "Raspberry PI"
+    mac: "d8:3a:dd:d2:b0:c0"
+    notes: "Water Monitor - Primary"
+    
+  - name: "RPI4 Dev Server"
+    ip: "192.168.1.249"
+    type: "port"
+    ports: [21, 22, 1883, 3000, 8086, 5900]
+    location: "Garage"
+    manufacturer: "Raspberry PI"
+    mac: "dc:a6:32:15:d5:33"
+    notes: "Water Monitor - Backup"
+    
+  - name: "RPI Database Server"
+    ip: "192.168.1.248"
+    type: "ping"
+    location: "Garage"
+    manufacturer: "Raspberry PI"
+    notes: "Future"
+    
+  - name: "RPI Home Assistant"
+    ip: "192.168.1.247"
+    type: "ping"
+    location: "Garage"
+    manufacturer: "Raspberry PI"
+    notes: "Home Automation"
+    
+  - name: "RPI 400"
+    ip: "192.168.1.244"
+    type: "ping"
+    location: "Garage"
+    manufacturer: "Raspberry PI"
+    notes: "Linux Dev"
+
+  # Irrigation Controllers
+  - name: "Irrigation - Front"
+    ip: "192.168.1.246"
+    type: "ping"
+    location: "Garage"
+    manufacturer: "Rainbird"
+    mac: "38:18:2b:2a:f6:c0"
+    notes: "Irrig Controller Front"
+    
+  - name: "Irrigation - Back"
+    ip: "192.168.1.245"
+    type: "ping"
+    location: "Garage"
+    manufacturer: "Rainbird"
+    mac: "4c:a1:61:09:40:22"
+    notes: "Irrig Controller Back"
+
+  # Other Devices
+  - name: "MWP Sensor Array"
+    ip: "192.168.1.243"
+    type: "ping"
+    location: "Outdoors Tank"
+    manufacturer: "ESP8266"
+    notes: "Water Sensor"
+    
+  - name: "Print Server"
+    ip: "192.168.1.242"
+    type: "ping"
+    location: "Office"
+    manufacturer: "NETBIOS"
+    notes: "Network Printer"
+    
+  - name: "MyCloud"
+    ip: "192.168.1.241"
+    type: "ping"
+    location: "Closet"
+    manufacturer: "WD"
+    notes: "Home Cloud"
+    
+  - name: "Ecobee LR"
+    ip: "192.168.1.240"
+    type: "ping"
+    location: "Living Room"
+    manufacturer: "Ecobee"
+    notes: "Thermostat"
+    
+  - name: "Ecobee BR"
+    ip: "192.168.1.239"
+    type: "ping"
+    location: "Master BR"
+    manufacturer: "Ecobee"
+    notes: "Thermostat"
+    
+  - name: "LiftMaster"
+    ip: "192.168.1.238"
+    type: "ping"
+    location: "Garage"
+    notes: "Garage Door"
+    
+  - name: "Aqualink"
+    ip: "192.168.1.237"
+    type: "ping"
+    location: "Outdoors Tank"
+    manufacturer: "Jandy"
+    notes: "Pool"
+    
+  - name: "WLED Nutguy"
+    ip: "192.168.1.236"
+    type: "ping"
+    location: "Patio"
+    manufacturer: "Qled"
+    notes: "LEDs - XMAS1"
+    
+  - name: "WLED Garage"
+    ip: "192.168.1.235"
+    type: "ping"
+    location: "Garage"
+    manufacturer: "Qled"
+    notes: "LEDs - Future"
+

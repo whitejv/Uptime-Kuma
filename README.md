@@ -33,8 +33,6 @@ nano docker-compose.yml
 Paste the following content into `docker-compose.yml`:
 
 ```yaml
-version: '3.8'
-
 services:
   uptime-kuma:
     image: louislam/uptime-kuma:latest
@@ -48,6 +46,8 @@ services:
 volumes:
   uptime-kuma-data:
 ```
+
+**Note**: The `version` field is no longer required in modern Docker Compose and has been omitted.
 
 Save and exit (Ctrl+O → Enter → Ctrl+X in nano).
 
@@ -87,6 +87,51 @@ Here are some visuals of what you'll see:
 - **Port monitors**: For TCP services (e.g., SSH on port 22, web interfaces on 80).
 
 Click **Add New Monitor** and select the type.
+
+## Bulk Import Monitors (Automated Setup)
+
+Instead of manually adding monitors one by one, you can use the included Python script to bulk import all your devices from a YAML configuration file.
+
+### Step 1: Install Python Dependencies
+
+```bash
+# Install required Python packages
+pip3 install -r requirements.txt
+```
+
+### Step 2: Configure Your Devices
+
+Edit `config/devices.yaml` to match your network setup. The file already includes a template based on your network devices. Each monitor entry supports:
+
+- `name`: Display name for the monitor
+- `ip`: IP address to monitor
+- `type`: Monitor type (`ping` or `port`)
+- `ports`: List of ports to monitor (required if type is `port`)
+- `location`, `manufacturer`, `mac`, `notes`: Optional metadata
+
+Example:
+```yaml
+monitors:
+  - name: "RPI5 Prod Server"
+    ip: "192.168.1.250"
+    type: "port"
+    ports: [21, 22, 1883, 3000, 8086, 5900]
+    notes: "Water Monitor - Primary"
+```
+
+### Step 3: Run the Import Script
+
+```bash
+python3 add_monitors.py
+```
+
+The script will:
+1. Prompt for your Uptime Kuma URL (defaults to `http://192.168.1.250:3001`)
+2. Ask for your username and password
+3. Read `config/devices.yaml`
+4. Create all monitors automatically (ping monitors for devices without ports, port monitors for each specified port)
+
+**Note**: The script will create separate monitors for each port. For example, if a device has ports `[22, 80, 443]`, it will create 3 separate port monitors.
 
 ## Updating Uptime Kuma
 
