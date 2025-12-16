@@ -30,3 +30,8 @@ monitors:
 
 Then run the `add_monitors.py` script to apply changes.
 
+To run:
+  cd /home/pi/Uptime-Kuma
+  source venv/bin/activate
+  python3 add_monitors.py
+
